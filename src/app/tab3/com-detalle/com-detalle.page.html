@@ -1,0 +1,60 @@
+
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button [text]="getBackButtonText()" defaultHref="/tab3"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Add your comment here:3</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <form [formGroup]="datosForm" (ngSubmit)="addComent(datosForm.value)">
+
+    <ion-item>
+      <ion-label position="floating">Nombre de Usuario</ion-label>
+      <ion-input formControlName="userName" placeholder="Pepito Benebientos"></ion-input>
+    </ion-item>
+    <div>
+      <ng-container *ngFor="let validaciones of mensajesVal.datos">
+        <div *ngIf="datosForm.get('userName').hasError(validaciones.type) &&
+                    (datosForm.get('userName').dirty || datosForm.get('userName').touched)">
+        {{validaciones.message}}
+        </div>
+      </ng-container>
+    </div>
+
+    <ion-item>
+      <ion-label position="floating">Titulo de la movie</ion-label>
+      <ion-input formControlName="titulo" placeholder="Spider-man"></ion-input>
+    </ion-item>
+    <div>
+      <ng-container *ngFor="let validaciones of mensajesVal.datos">
+        <div *ngIf="datosForm.get('titulo').hasError(validaciones.type) &&
+                    (datosForm.get('titulo').dirty || datosForm.get('titulo').touched)">
+        {{validaciones.message}}
+        </div>
+      </ng-container>
+    </div>
+
+    <ion-item>
+      <ion-label position="floating">Tu reseña/comentarios del la pelicula</ion-label>
+      <ion-input formControlName="resena" placeholder="Lo más epico del DC XD"></ion-input>
+    </ion-item>
+    <div>
+      <ng-container *ngFor="let validaciones of mensajesVal.datos">
+        <div *ngIf="datosForm.get('resena').hasError(validaciones.type) &&
+                    (datosForm.get('resena').dirty || datosForm.get('resena').touched)">
+        {{validaciones.message}}
+        </div>
+      </ng-container>
+    </div>
+
+    <ion-button expand="block" [disabled]="!datosForm.valid" type="submit">Ingresar Comentario</ion-button>
+
+  </form>
+
+
+
+</ion-content>

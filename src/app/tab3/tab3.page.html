@@ -1,0 +1,59 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Community
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-list *ngFor="let comentarios of getComentarios()">
+
+      <ion-card *ngIf="comentarios">
+
+        <ion-card-header style="text-align: center;">
+      
+          <ion-item>
+            <ion-icon name="people" slot="start"></ion-icon>
+            <ion-card-title>
+              {{comentarios.userName}}
+            </ion-card-title>
+          </ion-item>
+
+         <ion-item>
+          <ion-icon name="film-outline"></ion-icon>
+          <ion-card-subtitle>
+            {{comentarios.titulo}}
+          </ion-card-subtitle>
+         </ion-item>
+          
+        </ion-card-header>
+       
+        <ion-card-content class="card-center">
+          
+          <ion-item>
+            <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
+            <ion-label>{{comentarios.resena}}</ion-label>
+          </ion-item>
+          
+        </ion-card-content>
+
+      </ion-card>
+     
+  </ion-list>
+
+</ion-content>
+
+
+<ion-footer>
+    <ion-toolbar>
+
+      <div class="ion-text-center">
+        <ion-button fill="outline" [routerLink]="['/','Agregar_com']">
+          <ion-icon name="chatbubbles-outline"></ion-icon>Comentario
+        </ion-button>
+      </div>
+      
+    </ion-toolbar>
+</ion-footer>
