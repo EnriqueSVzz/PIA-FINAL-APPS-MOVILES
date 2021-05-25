@@ -7,13 +7,13 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <!-- <ion-list *ngFor="let comentarios of Data"> -->
 
   <ion-list *ngFor="let comentarios of getComentarios()">
-
       <ion-card *ngIf="comentarios">
 
         <ion-card-header style="text-align: center;">
-      
+
           <ion-item>
             <ion-icon name="people" slot="start"></ion-icon>
             <ion-card-title>
@@ -27,20 +27,20 @@
             {{comentarios.titulo}}
           </ion-card-subtitle>
          </ion-item>
-          
+
         </ion-card-header>
-       
+
         <ion-card-content class="card-center">
-          
+
           <ion-item>
             <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
             <ion-label>{{comentarios.resena}}</ion-label>
           </ion-item>
-          
+
         </ion-card-content>
 
       </ion-card>
-     
+
   </ion-list>
 
 </ion-content>
@@ -54,6 +54,6 @@
           <ion-icon name="chatbubbles-outline"></ion-icon>Comentario
         </ion-button>
       </div>
-      
+
     </ion-toolbar>
 </ion-footer>

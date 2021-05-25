@@ -59,6 +59,19 @@ export class ComDetallePage implements OnInit {
   }
 
   ngOnInit() {
+    /*this.db.dbState().subscribe((res) => {
+
+      if (res) {
+
+        this.db.fetchSongs().subscribe(item => {
+
+          this.Data = item
+
+        })
+
+      }
+
+    }); */
   }
 
   addComent(datos)
@@ -69,13 +82,17 @@ export class ComDetallePage implements OnInit {
 
   storeData()
   {
+    console.log(this.datosForm.value.userName);
+    console.log("store data");
     this.db.addComentarios(
       this.datosForm.value.userName,
       this.datosForm.value.titulo,
       this.datosForm.value.resena
-    ).then((res) => {
-      this.datosForm.reset();   //Posiblemnte borre los datos del forms una vez se le de al boton de guardar
-    })
+    )
+
+    this.router.navigateByUrl("/tabs/tab3");
+    console.log(this.datosForm.value.userName);
+    console.log("store data");
   }
 
   getBackButtonText() {
