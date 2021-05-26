@@ -9,8 +9,11 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+
+  <!-- METODO PARA GUARDA EN LA BASE DE SQLite PERO NO NOS TRAE NADA -->
   <!-- <form [formGroup]="datosForm" (ngSubmit)="(ngSubmit)="storeData()"> -->
 
+    <!-- DECLARACION Y APLICAION DEL FORMULARIO -->
   <form [formGroup]="datosForm" (ngSubmit)="addComent(datosForm.value)">
 
     <ion-item>
@@ -52,6 +55,7 @@
       </ng-container>
     </div>
 
+    <!-- BOTON PARA CARGAR LOS DATOS DE NUESTRO FORMULARIO -->
     <ion-button expand="block" [disabled]="!datosForm.valid" type="submit">Add your opinion</ion-button>
 
   </form>

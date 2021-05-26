@@ -15,13 +15,16 @@ export class Tab2Page {
 
   constructor(
     private estrenoServices: PubilicidadServices,
-    public navCtrl : NavController, 
+    public navCtrl : NavController,
     private sanitizer : DomSanitizer) {}
 
+    //FUNCION PRINCIPLA DE LA CUAL OBTENEMOS LOS DATOS DE ESTRENOS[]
   ngOnInit()
   {
     this.estrenos = this.estrenoServices.getAllEstrenos();
     console.log(this.estrenos);
+
+    //CICLO QUE NOS AYUDA A USAR LOS LINKS DEL VIDEO Y COLOCARLOS EN EL HTML
 
     this.estrenos.forEach( trailer =>{
       trailer.urlSafe = this.sanitizer.bypassSecurityTrustResourceUrl(trailer.trailerUrl);

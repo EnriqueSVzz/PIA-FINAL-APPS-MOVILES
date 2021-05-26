@@ -1,3 +1,6 @@
+
+//DEFINIMOS UN OBJETO PELIS PARA GUARDAR LOS DATOS DE NUESTRA  API
+
 export interface Pelis
 {
     Title: string;

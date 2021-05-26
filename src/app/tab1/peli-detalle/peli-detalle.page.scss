@@ -1,3 +1,5 @@
+
+//AQUÍ DEFINIMOS EL FORMATO QUE TOMARÁ LA IMAGEN
 .info-img
 {
     max-height: 50vh;
@@ -7,12 +9,15 @@
     display: block;
 }
 
+
+//CENTRAR EL ION-CARD
 .card-center{
-    width:90%; // adjust width on your ion-card suitable on your screen
+    width:90%;
     display:block;
     margin: 0 auto;
 }
 
+//AQUI DEFINIMOS UN TAMAÑO PARA LA ALTURA DE LA IMAGEN
 @media(max-width: 800px)
 {
     .info-img

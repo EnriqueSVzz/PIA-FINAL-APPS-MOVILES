@@ -2,9 +2,9 @@
   <ion-toolbar color="secondary">
     <ion-item color="secondary">
     <ion-title>
-      Search page 
+      Search page
     </ion-title>
-    <ion-label slot="end">Dark Mode</ion-label>
+    <ion-label slot="end">Dark Mode</ion-label> <!-- BOTON CAMBIA LOS TEMAS OSCURO/CLARO -->
     <ion-toggle slot="end" (ionChange)='toggleTheme($event)'></ion-toggle>
   </ion-item>
   </ion-toolbar>
@@ -12,12 +12,16 @@
 
 <ion-content>
 
+  <!-- BARRA DE BUSQUEDA -->
+
   <ion-searchbar [(ngModel)]="term" (ionChange)="searchChanged($event)"></ion-searchbar>
+
+  <!-- ESTE ITEM ES LA OPCIÓN MULTIPLE DE LAS POSIBLES BUSQUEDAS -->
 
   <ion-item>
     <ion-label>Select the type of search </ion-label>
     <ion-select [(ngModel)]="type" (ionChanged)="searchChanged($event)">
-      
+
       <ion-select-option selected="true" value="">All</ion-select-option>
       <ion-select-option value="movie">Movies</ion-select-option>
       <ion-select-option value="series">Series</ion-select-option>
@@ -25,6 +29,8 @@
 
     </ion-select>
   </ion-item>
+
+  <!-- AQUÍ CARGAMOS LOS DATOS DE LA API Y ROUTIAMOS A PELIS DETALLE PARA VER MAS INFORMACIÓN DE LA BUSQUEDA -->
 
   <ion-list>
     <ion-item button *ngFor="let peli of (results | async)" [routerLink]="['/','peli',peli.imdbID]">
@@ -35,9 +41,9 @@
         <h3>{{peli.Title}}</h3>
         {{peli.Year}}
       </ion-label>
-      <ion-icon slot="end" *ngIf="peli.Type == 'movie'" name="videocam"></ion-icon> 
-      <ion-icon slot="end" *ngIf="peli.Type == 'series'" name="tv"></ion-icon> 
-      <ion-icon slot="end" *ngIf="peli.Type == 'episode'" name="videocam"></ion-icon> 
+      <ion-icon slot="end" *ngIf="peli.Type == 'movie'" name="videocam"></ion-icon>
+      <ion-icon slot="end" *ngIf="peli.Type == 'series'" name="tv"></ion-icon>
+      <ion-icon slot="end" *ngIf="peli.Type == 'episode'" name="videocam"></ion-icon>
     </ion-item>
   </ion-list>
 </ion-content>

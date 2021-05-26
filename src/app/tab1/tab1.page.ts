@@ -10,6 +10,8 @@ import { Pelis } from '../model/Pelis.models'
 })
 export class Tab1Page {
 
+
+  //DECLARACIÓN DE VARIABLES
   results : Observable<Pelis>;
   term : string='';
   type : string='';
@@ -22,11 +24,16 @@ export class Tab1Page {
 
   }
 
+  //FUNCIÓN QUE REALIZA LA BUSQUEDA MEDIANTE LA FUNCIÓN DEL SERVICE ("buscarPeliculas")
+
   searchChanged(): void
   {
     console.log('searchChanged');
     this.results = this.peliService.buscarPeliculas(this.term,this.type)
   }
+
+
+  //FUNCIÓN PARA EL MODO OSCURO/MODO CLARO
 
   toggleTheme(event)
   {

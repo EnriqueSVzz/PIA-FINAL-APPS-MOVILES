@@ -11,18 +11,28 @@ import { SQLite, SQLiteObject } from '@ionic-native/sqlite/ngx';
 @Injectable({
   providedIn: 'root'
 })
+
+
+
+
 export class ComentariosService {
+
+  // AQUÍ DECLARAMOS LAS VARIABLES CON SUS TIPOS, QUE VAMOS A UTILIZAR
 
   private storage: SQLiteObject;
   comentariosList = new BehaviorSubject([]);
   private isDbReady: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
+
+  //HACEMOS LA INYECCIÓN DE DEPENDENCIAS
   constructor(
     private platform: Platform,
     private sqlite: SQLite,
     private httpClient: HttpClient,
     private sqlPorter: SQLitePorter,
   ) {
+
+    //AQUI VEMOS SI LA BASE DE DATOS ESTA LISTA, SI LO ESTÁ, SE CREA
     this.platform.ready().then(() => {
       this.sqlite.create({
         name: 'positronx_db.db',
@@ -35,6 +45,8 @@ export class ComentariosService {
     });
   }
 
+  // SI LA BASE DE DATOS ESTA LISTA, REGRESA UN BOOLEAN QUE CONFIRME SU ESTADO
+
   dbState() {
     return this.isDbReady.asObservable();
   }
@@ -42,6 +54,10 @@ export class ComentariosService {
   fetchComentarios(): Observable<Comentario[]> {
     return this.comentariosList.asObservable();
   }
+
+
+  //SE ACCESA A LA BASE DE DATOS, USANDO HTTPCLIENT, DENTRO DE LA CARPETA 'assets/base_com.sql'
+
 
   getFakeData() {
     this.httpClient
@@ -56,6 +72,9 @@ export class ComentariosService {
         .catch((error) => console.error(error));
     });
   }
+
+  //OBTENEMOS LA DATA DE LA BASE DE DATOS CREADA CON SQLITE Y LOS "PUSHEAMOS" A UN ITEM Y SE
+  //AGREGA A COMENTARIOSLIST
 
   getComentarios(){
     return this.storage
@@ -76,6 +95,8 @@ export class ComentariosService {
     });
   }
 
+  //HACE UNA INSERCIÓN A LA BASE DE DATOS CON LOS DATOS DEL FORMULARIOS
+
   addComentarios(userName, resena,titulo) {
     let data = [userName,resena, titulo];
     return this.storage.executeSql('INSERT INTO comentariostable (userName,resena,titulo) VALUES (?, ?, ?)', data)
@@ -86,27 +107,36 @@ export class ComentariosService {
 
 
 
+  //-----------------------------------------------------------//
+
   //Forms
+
+  //CREACIÓN DEL ARREGLO COMENTARIOS  DEL TIPO COMENTARIO, QUE ES EL MODELO QUE CREAMOS
+
   public comentarios : Comentario[]=[
     {
       id:0,
-      userName: 'Enrique Doriloko',
+      userName: 'Enrique Vazquez',
       resena: 'Me parece muy buena pelicula',
       titulo: 'Spider-man',
       },
     {
       id:1,
       userName: 'Luis Chacon',
-      resena: 'Me parece muy buena pelicula',
+      resena: 'ME ENCANTA',
       titulo: 'Shrek',
     },
   ];
 
 
+  //AQUI NOS TRAEMOS LOS DATOS DEL ARREGLO DE COMENTARIOS
+
   public getCome() : Comentario[]
   {
     return this.comentarios;
   }
+
+  //GUARDAMOS LOS DATOS OBTENIDOS EN EL FORMS
 
   public addComenInput(comentario:any)
   {

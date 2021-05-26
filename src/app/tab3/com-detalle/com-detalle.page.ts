@@ -12,6 +12,9 @@ import { ComentariosService } from 'src/app/Services/comentarios.service';
 
 export class ComDetallePage implements OnInit {
 
+
+  // DECLARACION DE LAS VARIBALES Y EL FORMULARIO
+
   comentarios: Comentario;
 
   datosForm: FormGroup;
@@ -31,6 +34,7 @@ export class ComDetallePage implements OnInit {
     private router: Router
   )
   {
+    //CREAMOS EL FORMS Y LE DAMOS SU RESPECTIVA FROMA CON VALIDACIONES PARA SUS CAMPOS
     this.datosForm = this.formBuilder.group({
 
       userName : new FormControl("", Validators.compose([
@@ -59,6 +63,7 @@ export class ComDetallePage implements OnInit {
   }
 
   ngOnInit() {
+    //INTENTO DE USO DE SQLite PERO NO NOS CARGA NADA
     /*this.db.dbState().subscribe((res) => {
 
       if (res) {
@@ -74,12 +79,17 @@ export class ComDetallePage implements OnInit {
     }); */
   }
 
+  //FUNCION QUE RECIBE LOS VALORES DEL FORMS Y LOS INSERTA MEDIANTE LA FUNCION "addComenInput()"
+  //DECLARADA EN EL SERVICES COMENTARIOS
+  //Y NOS REDIRECCIÓNA AL TAB3
   addComent(datos)
   {
     this.com.addComenInput(datos);
     this.router.navigateByUrl("/tabs/tab3");
   }
 
+  //FUNCIONA PARA ALMACENAR LO DATOS DEL FORMS EN LA BASE DE DATOS
+  //Y NOS REDIRECCIÓNA AL TAB3
   storeData()
   {
     console.log(this.datosForm.value.userName);
@@ -95,6 +105,7 @@ export class ComDetallePage implements OnInit {
     console.log("store data");
   }
 
+  //BOTON QUE NOS AYUDA SALIR DEL FORMULARIO
   getBackButtonText() {
 
     const win = window as any;

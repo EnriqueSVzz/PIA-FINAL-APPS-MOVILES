@@ -9,9 +9,15 @@ import { Pelis } from '../model/Pelis.models';
 
 export class Peliservice{
 
+  //DECLARAMOS LAS VARIABLES QUE VAMOS A UTILIZAR
+
     private url: string='';
-    private apiKey: string = '3387c729';
+    private apiKey: string = '3387c729';  //ESTA ES NUESTRA API KEY
+
     constructor(private http: HttpClient) {}
+
+    //HACEMOS UNA BUSQUEDA CONCATENADO EL TITULO, EL TIPO Y EL APIKEY, PARA POSTERIORMENTE
+    //TRABAJARLO UN URL MÁS COMPLETO.
 
     buscarPeliculas(title: string, type:string)
     {
@@ -20,6 +26,9 @@ export class Peliservice{
         console.log(this.url);
         return this.http.get<Pelis>(this.url).pipe(map (results => results['Search']));
     }
+
+    //ESTA FUNCIÓN TOMA EL ID DE UNA DE LAS BUSQUEDAS SELECCIONADAS Y NOS RETORNA TODOS LOS DATOS DE
+    //LA API CONCATENANDO EL ID CON EL URL
 
     getDetails(id:string)
     {

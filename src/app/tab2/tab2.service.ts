@@ -10,7 +10,10 @@ export class PubilicidadServices
 {
     constructor(){}
 
-    private publicidad : Estrenos [] = 
+    //DEFINIMOS UN ARREGLO DONDE GUARDAREMOS NUESTROS DATOS DE LA PESTAÑA ESTRENOS
+    //EN UN ARREGLO DE TIPO ESTRENOS
+
+    private publicidad : Estrenos [] =
     [
         {
             titulo : 'Fast And Furious 9',
@@ -37,6 +40,8 @@ export class PubilicidadServices
             urlSafe: ' '
         }
     ];
+
+    //ESTA FUNCIÓN NOS AYUDA A POBTENER LOS DATOS DE NUESTRO ARREGLO
 
     getAllEstrenos()
     {

@@ -22,23 +22,27 @@ export class Tab3Page {
 
   ngOnInit()
   {
+    //PROCEDIMENTO QUE NOS AYUDA A OBTENER LOS DATOS DE LA BASE DE SQLite CON LA FUNCION
+    //fetchComentarios() DECLARADA EN EL SERVICES COMENTARIOS
     this.db.dbState().subscribe((res) => {
       if(res){
         this.db.fetchComentarios().subscribe(item => {
           this.Data = item
-          
+
         })
       }
     });
   }
 
 
+  //FUNCIÓN QUE NOS TARE LOS VALORES DEL ARREGLO DE COMENTRIOS
   getComentarios():Comentario[]
   {
     //console.log("getComenatrios Tab3");
     return this.data.getCome();
   }
 
+  //FUNCIÓN QUE NOS ROUTEA A EL FROMULARIO
   addComentFromFrom()
   {
     this.router.navigateByUrl("/Agregar_com");

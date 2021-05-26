@@ -1,15 +1,7 @@
-.info-img
-{
-    max-height: 50vh;
-    max-width: 50vh;
-    padding: 5px;
-    margin: auto;
-    display: block;
-}
-
+//CARACTERISTICA QUE NOS AYUDA A CENTRAR LOS ION-CARD
 .card-center
 {
-    width:90%; // adjust width on your ion-card suitable on your screen
+    width:90%;
     display:block;
     margin: 0 auto;
 }
@@ -19,11 +11,3 @@
     text-align: center;
 }
 
-
-@media(max-width: 800px)
-{
-    .info-img
-    {
-        max-height: 100%;
-    }
-}

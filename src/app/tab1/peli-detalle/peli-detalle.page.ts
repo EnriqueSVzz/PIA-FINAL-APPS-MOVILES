@@ -9,6 +9,8 @@ import { Peliservice } from 'src/app/Services/pelis.service';
 })
 export class PeliDetallePage implements OnInit {
 
+
+  //EN ESTA VARIABLE VAMOS A GUARDAR LOS DATOS DE LA API TEMPORALMENTE
   content: object = null;
 
   constructor
@@ -17,7 +19,11 @@ export class PeliDetallePage implements OnInit {
     private activedRoute: ActivatedRoute
   ) { }
 
-  ngOnInit() 
+
+    // SE CARGA DE LA OPCIÓN SELECCIONADA ANTERIORMENTE EN LA BUSQUEDA
+    //PARA TRAERNOS MÁS INFORMACIÓN DE LA MISMA
+
+  ngOnInit()
   {
     console.log('peli-detalle');
     let id = this.activedRoute.snapshot.paramMap.get('id');

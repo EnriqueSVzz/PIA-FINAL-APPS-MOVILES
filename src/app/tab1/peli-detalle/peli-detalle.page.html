@@ -1,32 +1,35 @@
 <ion-header>
   <ion-toolbar color="secondary">
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/"></ion-back-button>
+      <ion-back-button defaultHref="/"></ion-back-button> <!-- BOTON PARA REGRESAR -->
     </ion-buttons>
     <ion-title>
-      <h6>{{content ?. Genre}}</h6>
+      <h6>{{content ?. Genre}}</h6> <!-- EN CASO DE NO TENER GENERO SE PONE EL SIGNO ? -->
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+  <!-- DESPLEGAMOS LOS DATOS DE LA API -->
+
   <ion-card *ngIf="content">
 
     <ion-card-header style="text-align: center;">
-      
+
       <ion-card-title>{{content.Title}}</ion-card-title>
-  
+
       <ion-card-subtitle>
         {{content.Year}} {{content.Language}}
       </ion-card-subtitle>
 
     </ion-card-header>
-   
+
     <ion-card-content class="card-center">
-      
+
       <img src="{{content.Poster}}" class="info-img">
       <h1>{{content.Plot}}</h1>
-      
+
       <ion-item lines="none">
         <ion-icon name="star-half" slot="start"></ion-icon>
         <ion-label >{{content.imdbRating}}</ion-label>
