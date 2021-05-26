@@ -20,6 +20,8 @@ export class ComentariosService {
   // AQUÍ DECLARAMOS LAS VARIABLES CON SUS TIPOS, QUE VAMOS A UTILIZAR
 
   private storage: SQLiteObject;
+
+  db : SQLiteObject; //variable de segundo metodo
   comentariosList = new BehaviorSubject([]);
   private isDbReady: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
@@ -31,6 +33,8 @@ export class ComentariosService {
     private httpClient: HttpClient,
     private sqlPorter: SQLitePorter,
   ) {
+
+
 
     //AQUI VEMOS SI LA BASE DE DATOS ESTA LISTA, SI LO ESTÁ, SE CREA
     this.platform.ready().then(() => {
@@ -45,8 +49,26 @@ export class ComentariosService {
     });
   }
 
-  // SI LA BASE DE DATOS ESTA LISTA, REGRESA UN BOOLEAN QUE CONFIRME SU ESTADO
 
+  //Funciópn para crear la tabla
+
+  // CreateTable()
+  // {
+  //   let sql = 'CREATE TABLE IF NOT EXIST comentariostable2 (id INTEGRATE PRIMARY KEY AUTOINCREMENT, userName TEXT, resena TEXT, titulo TEXT)';
+  //   return this.db.executeSql(sql,[]);
+
+  // }
+
+  // setDataBase(db : SQLiteObject)
+  // {
+  //   if(this.db===null)
+  //   {
+  //     this.db=db;
+  //   }
+  // }
+
+
+ // SI LA BASE DE DATOS ESTA LISTA, REGRESA UN BOOLEAN QUE CONFIRME SU ESTADO
   dbState() {
     return this.isDbReady.asObservable();
   }
@@ -95,6 +117,28 @@ export class ComentariosService {
     });
   }
 
+  //SQlite 2
+  // GETCOMENTARIOS2()
+  // {
+  //   let  sql = 'SELECT * FROM comentariostable2';
+  //   return this.db.executeSql(sql,[])
+  //   .then(respuesta =>
+  //     {
+  //       let comentarios=[];
+  //       for(let i=0;i<respuesta.rows.length;i++)
+  //       {
+  //         comentarios.push(respuesta.rows.item(i));
+  //       }
+
+  //       return Promise.resolve(comentarios);
+  //   }
+  //     ).catch(error =>{
+  //       Promise.reject(error);
+  //     });
+  // }
+
+
+
   //HACE UNA INSERCIÓN A LA BASE DE DATOS CON LOS DATOS DEL FORMULARIOS
 
   addComentarios(userName, resena,titulo) {
@@ -104,6 +148,17 @@ export class ComentariosService {
       this.getComentarios();
     });
   }
+
+  //SQlite 2
+  // ADDCOMENTARIOS2(comentarios: any)
+  // {
+  //   let sql="INSERT INTO comentariostable2 (userName, resena, titulo) values (?,?,?) ";
+  //   return this.db.executeSql(sql,[
+  //     comentarios.userName,
+  //     comentarios.resena,
+  //     comentarios.titulo,
+  //   ]);
+  // }
 
 
 

@@ -1,8 +1,11 @@
+import { SQLite } from '@ionic-native/sqlite/ngx';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Comentario } from 'src/app/model/Comentarios.models';
 import { ComentariosService } from 'src/app/Services/comentarios.service';
+
+
 
 @Component({
   selector: 'app-com-detalle',
@@ -16,6 +19,8 @@ export class ComDetallePage implements OnInit {
   // DECLARACION DE LAS VARIBALES Y EL FORMULARIO
 
   comentarios: Comentario;
+
+  comenatrios2: any = {usreName:' ', resena: ' ', titulo: ' '};
 
   datosForm: FormGroup;
 
@@ -31,6 +36,8 @@ export class ComDetallePage implements OnInit {
     private db:ComentariosService,
     private formBuilder: FormBuilder,
     private com:ComentariosService,
+    private comentariosS: ComentariosService,
+    private sqlite: SQLite,
     private router: Router
   )
   {
@@ -92,8 +99,6 @@ export class ComDetallePage implements OnInit {
   //Y NOS REDIRECCIÓNA AL TAB3
   storeData()
   {
-    console.log(this.datosForm.value.userName);
-    console.log("store data");
     this.db.addComentarios(
       this.datosForm.value.userName,
       this.datosForm.value.titulo,
@@ -104,6 +109,16 @@ export class ComDetallePage implements OnInit {
     console.log(this.datosForm.value.userName);
     console.log("store data");
   }
+
+  // agregarComentario()
+  // {
+  //   this.comentariosS.ADDCOMENTARIOS2(this.comenatrios2)
+  //   .then(respuesta => {
+  //     this.router.navigateByUrl("/tabs/tab3");
+  //   }).catch(eror => {
+  //     console.log(eror);
+  //   })
+  // }
 
   //BOTON QUE NOS AYUDA SALIR DEL FORMULARIO
   getBackButtonText() {

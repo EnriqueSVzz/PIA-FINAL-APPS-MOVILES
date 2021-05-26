@@ -1,3 +1,4 @@
+import { ComentariosService } from 'src/app/Services/comentarios.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
@@ -19,10 +20,12 @@ import { SQLitePorter } from '@ionic-native/sqlite-porter/ngx';
   providers: [
     SQLite,
     SQLitePorter,
-    { 
-      provide: RouteReuseStrategy, 
-      useClass: IonicRouteStrategy 
-    }],
+    {
+      provide: RouteReuseStrategy,
+      useClass: IonicRouteStrategy
+    }
+    // ComentariosService
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

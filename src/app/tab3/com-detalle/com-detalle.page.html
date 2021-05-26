@@ -13,8 +13,11 @@
   <!-- METODO PARA GUARDA EN LA BASE DE SQLite PERO NO NOS TRAE NADA -->
   <!-- <form [formGroup]="datosForm" (ngSubmit)="(ngSubmit)="storeData()"> -->
 
+    <!-- METODO 2 SQLITE -->
+    <!-- <form [formGroup]="datosForm" (ngSubmit)="agregarComentario()"> -->
+
     <!-- DECLARACION Y APLICAION DEL FORMULARIO -->
-  <form [formGroup]="datosForm" (ngSubmit)="addComent(datosForm.value)">
+   <form [formGroup]="datosForm" (ngSubmit)="addComent(datosForm.value)">
 
     <ion-item>
       <ion-label position="floating">User Name</ion-label>
